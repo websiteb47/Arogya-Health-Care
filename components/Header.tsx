@@ -7,8 +7,8 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Treatments", href: "/treatments" },
+  { name: "About Us", href: "/about" },
+  { name: "Service", href: "/treatments" },
   { name: "Skin Care", href: "/treatments#skin-care" },
   { name: "Hair Care", href: "/treatments#hair-care" },
   { name: "Cosmetology", href: "/treatments#cosmetology" },
@@ -78,7 +78,7 @@ export default function Header() {
 
           {/* Desktop Nav */}
           <nav className="hidden xl:flex flex-1 justify-center items-center gap-8 text-[15px] font-extrabold text-[#2a1708] tracking-wide">
-            {navLinks.filter(l => ["Home", "About", "Treatments", "Contact"].includes(l.name)).map((link) => (
+            {navLinks.filter(l => ["Home", "About Us", "Service", "Contact"].includes(l.name)).map((link) => (
               <Link key={link.name} href={link.href} className="hover:text-[#d46a48] transition-colors">
                 {link.name}
               </Link>
