@@ -2,25 +2,36 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #123B46; /* Deep Navy */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  
+  --color-pink-soft: #ffedf8;
+  --color-beige-soft: #fcf5eb;
+  --color-brown-dark: #4a4240;
+  
+  --color-teal-50: #ffedf8;
+  --color-teal-100: #fbdfde;
+  --color-teal-500: #8a5d3f;
+  --color-teal-700: #4a4240;
+  --color-navy: #4a4240; /* Map navy to dark brown to instantly convert all old text headers */
+  --color-gray-50: #fcf5eb; /* Map gray-50 to beige-soft to convert old backgrounds */
+  --color-gold: #C9A227;
+  
+  --font-sans: var(--font-inter), var(--font-noto-telugu), sans-serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
 }
