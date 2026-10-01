@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 
 export default function About() {
@@ -14,12 +15,20 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative"
+            className="relative group"
           >
-            <div className="aspect-[4/3] rounded-3xl overflow-hidden bg-gray-200">
-              {/* Image Placeholder - Clinic Image */}
+            <div className="aspect-square lg:aspect-[4/5] rounded-3xl overflow-hidden bg-[#e3d5c5]/20 relative shadow-xl z-20">
+              <Image
+                src="/clinic image.png"
+                alt="Arogya Health Care Clinic"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
             </div>
-            <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-teal-100 rounded-full blur-2xl z-0" />
+            {/* Dynamic Backlight Glow on hover */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#fbdfde] via-[#f9e9e6] to-[#e3d5c5] rounded-3xl blur-[40px] opacity-0 group-hover:opacity-70 transition-opacity duration-700 z-10" />
+            {/* Static accent glow */}
+            <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-[#fbdfde]/50 rounded-full blur-3xl z-0" />
           </motion.div>
 
           <motion.div
@@ -40,7 +49,7 @@ export default function About() {
             <div className="grid sm:grid-cols-2 gap-4 mb-10">
               {['Skin Care', 'Hair Care', 'Laser Treatments', 'Cosmetology'].map((item) => (
                 <div key={item} className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-teal-500 flex-shrink-0" />
+                  <CheckCircle2 className="w-5 h-5 text-[#c89972] flex-shrink-0" />
                   <span className="font-semibold text-navy">{item}</span>
                 </div>
               ))}
@@ -48,7 +57,7 @@ export default function About() {
 
             <Link
               href="/about"
-              className="inline-flex items-center gap-2 text-teal-600 font-bold hover:text-teal-700 transition group"
+              className="inline-flex items-center gap-2 text-[#8a5d3f] font-bold hover:text-[#4a4240] transition group"
             >
               Know More About Us
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

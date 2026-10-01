@@ -2,16 +2,19 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, Phone, Mail, MapPin } from "lucide-react";
+import { Menu, X, Phone, Mail, MapPin, ChevronDown } from "lucide-react";
+import { FacebookIcon, InstagramIcon, TwitterIcon, YoutubeIcon } from "./icons/SocialIcons";
 import { motion, AnimatePresence } from "framer-motion";
+import { treatmentCategories } from "../data/treatments";
 
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
-  { name: "Service", href: "/treatments" },
-  { name: "Skin Care", href: "/treatments#skin-care" },
-  { name: "Hair Care", href: "/treatments#hair-care" },
-  { name: "Cosmetology", href: "/treatments#cosmetology" },
+  { 
+    name: "Service", 
+    href: "/treatments",
+    isMega: true
+  },
   { name: "Gallery", href: "/gallery" },
   { name: "Doctor", href: "/doctor" },
   { name: "Contact", href: "/contact" },
@@ -53,10 +56,11 @@ export default function Header() {
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
                 <span>09959-333820</span>
               </a>
-              <div className="flex items-center gap-3 border-l border-white/20 pl-4">
-                <a href="#" className="hover:text-white"><svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-                <span className="text-white/30 text-xs">|</span>
-                <a href="#" className="hover:text-white"><svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.016 3.016 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.55 9.376.55 9.376.55s7.505 0 9.377-.55a3.016 3.016 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+              <div className="flex items-center gap-4 border-l border-white/20 pl-4">
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-white transition-colors"><FacebookIcon className="w-4 h-4" /></a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-white transition-colors"><InstagramIcon className="w-4 h-4" /></a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-white transition-colors"><TwitterIcon className="w-4 h-4" /></a>
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-white transition-colors"><YoutubeIcon className="w-4 h-4" /></a>
               </div>
             </div>
           </div>
@@ -77,11 +81,34 @@ export default function Header() {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden xl:flex flex-1 justify-center items-center gap-8 text-[15px] font-extrabold text-[#2a1708] tracking-wide">
-            {navLinks.filter(l => ["Home", "About Us", "Service", "Contact"].includes(l.name)).map((link) => (
-              <Link key={link.name} href={link.href} className="hover:text-[#d46a48] transition-colors">
-                {link.name}
-              </Link>
+          <nav className="hidden xl:flex flex-1 justify-center items-center gap-6 text-[14px] lg:text-[15px] font-extrabold text-[#2a1708] tracking-wide">
+            {navLinks.map((link) => (
+              <div key={link.name} className="relative group">
+                <Link href={link.href} className="flex items-center gap-1 hover:text-[#d46a48] transition-colors whitespace-nowrap py-4">
+                  {link.name}
+                  {link.isMega && <ChevronDown className="w-4 h-4 opacity-70 group-hover:rotate-180 transition-transform" />}
+                </Link>
+                {link.isMega && (
+                  <div className="absolute top-[80%] left-1/2 -translate-x-1/2 w-[700px] bg-white/95 backdrop-blur-lg rounded-2xl shadow-xl shadow-[#4a4240]/10 border border-[#e3d5c5]/50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0 overflow-hidden z-50">
+                    <div className="p-6 grid grid-cols-3 gap-6">
+                      {treatmentCategories.map((category) => (
+                        <div key={category.title}>
+                          <Link href={`/treatments#${category.title.toLowerCase().replace(' ', '-')}`} className="block font-bold text-[#d46a48] mb-3 pb-2 border-b border-[#e3d5c5]/40 hover:text-[#4a4240] transition-colors whitespace-nowrap overflow-hidden text-ellipsis">
+                            {category.title}
+                          </Link>
+                          <div className="flex flex-col gap-2.5">
+                            {category.items.map((item) => (
+                              <Link key={item.slug} href={`/treatments/${item.slug}`} className="text-[13px] text-[#4a4240] hover:text-[#d46a48] transition-colors font-semibold whitespace-nowrap overflow-hidden text-ellipsis block">
+                                {item.name}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
             ))}
           </nav>
 
@@ -116,14 +143,34 @@ export default function Header() {
             >
               <nav className="flex flex-col px-6 pb-6 gap-3">
                 {navLinks.map((link) => (
-                  <Link
-                    key={link.name}
-                    href={link.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="text-lg font-medium text-navy/90 hover:text-teal-500 py-2 border-b border-gray-50 last:border-none"
-                  >
-                    {link.name}
-                  </Link>
+                  <div key={link.name} className="border-b border-gray-50 last:border-none">
+                    <Link
+                      href={link.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="text-lg font-bold text-navy/90 hover:text-teal-500 py-2 w-full flex justify-between items-center"
+                    >
+                      {link.name}
+                      {link.isMega && <ChevronDown className="w-5 h-5 opacity-50" />}
+                    </Link>
+                    {link.isMega && (
+                      <div className="flex flex-col pl-4 border-l-2 border-[#e3d5c5]/40 ml-2 mb-3 mt-2 gap-5">
+                        {treatmentCategories.map((cat) => (
+                          <div key={cat.title}>
+                            <Link href={`/treatments#${cat.title.toLowerCase().replace(' ', '-')}`} onClick={() => setMobileMenuOpen(false)} className="font-bold text-[#d46a48] mb-3 block">
+                              {cat.title}
+                            </Link>
+                            <div className="flex flex-col gap-3 pl-3 border-l border-gray-200">
+                               {cat.items.map(item => (
+                                 <Link key={item.slug} href={`/treatments/${item.slug}`} onClick={() => setMobileMenuOpen(false)} className="text-sm font-medium text-navy/70 hover:text-[#d46a48]">
+                                   {item.name}
+                                 </Link>
+                               ))}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 ))}
                 <div className="h-px bg-gray-100 my-2" />
                 <div className="flex flex-col gap-3">

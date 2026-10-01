@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Phone, MapPin } from "lucide-react";
+import { FacebookIcon, InstagramIcon, TwitterIcon, YoutubeIcon } from "./icons/SocialIcons";
 
 export default function Footer() {
   return (
@@ -25,9 +26,15 @@ export default function Footer() {
             <p className="text-white font-bold text-sm mb-4">
               Health Care
             </p>
-            <p className="text-white/90 text-sm max-w-xs leading-relaxed font-medium">
+            <p className="text-white/90 text-sm max-w-xs leading-relaxed font-medium mb-6">
               Professional dermatology and cosmetic care tailored to your individual needs.
             </p>
+            <div className="flex items-center gap-5 text-white/80">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-white hover:scale-110 transition-all transform"><FacebookIcon className="w-5 h-5 fill-current" /></a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-white hover:scale-110 transition-all transform"><InstagramIcon className="w-5 h-5" /></a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-white hover:scale-110 transition-all transform"><TwitterIcon className="w-5 h-5 fill-current" /></a>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-white hover:scale-110 transition-all transform"><YoutubeIcon className="w-5 h-5" /></a>
+            </div>
           </div>
 
           <div>
@@ -75,7 +82,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+        <div className="border-t border-white/20 pt-6 mt-8 flex justify-center text-center">
           <p className="text-white/70 text-xs font-semibold">
             © {new Date().getFullYear()} Arogya Health Care. All Rights Reserved.
           </p>
