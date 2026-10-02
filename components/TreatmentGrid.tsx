@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -17,31 +18,45 @@ export default function TreatmentGrid({ hideHeading = false }: { hideHeading?: b
 
         {treatmentCategories.map((cat, catIdx) => (
           <div key={cat.title} className="mb-20 last:mb-0" id={cat.title.toLowerCase().replace(' ', '-')}>
-            <div className="flex items-center gap-4 mb-10">
-              <h3 className="text-2xl lg:text-3xl font-bold text-navy">{cat.title}</h3>
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="flex items-center gap-4 mb-10"
+            >
+              <h3 className="text-2xl lg:text-3xl font-bold text-[#203138]">{cat.title}</h3>
               <div className="h-px bg-[#e3d5c5] flex-1"></div>
-            </div>
+            </motion.div>
             
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {cat.items.map((item, idx) => (
-                <Link
-                  href={`/treatments/${item.slug}`}
+                <motion.div
                   key={item.name}
-                  className="block group bg-[#fcf5eb] rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-[#e3d5c5]/50 flex flex-col"
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.1 }}
+                  transition={{ duration: 0.6, delay: idx * 0.1, type: "spring", stiffness: 100 }}
+                  className="block h-full"
                 >
-                  <div className="w-full h-48 relative overflow-hidden bg-gray-100 shrink-0">
-                    <Image 
-                      src={item.image} 
-                      alt={item.name}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h4 className="text-lg font-bold text-navy mb-2 group-hover:text-teal-600 transition-colors">{item.name}</h4>
-                    <p className="text-sm text-navy/60 line-clamp-2">{item.desc}</p>
-                  </div>
-                </Link>
+                  <Link
+                    href={`/treatments/${item.slug}`}
+                    className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-[#e3d5c5]/30 flex flex-col h-full hover:-translate-y-1"
+                  >
+                    <div className="w-full h-56 relative overflow-hidden bg-gray-50 shrink-0">
+                      <Image 
+                        src={item.image} 
+                        alt={item.name}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                      />
+                    </div>
+                    <div className="p-6 flex flex-col flex-1">
+                      <h4 className="text-lg font-bold text-[#203138] mb-2 group-hover:text-[#c45330] transition-colors">{item.name}</h4>
+                      <p className="text-[15px] text-gray-600 line-clamp-2 leading-relaxed">{item.desc}</p>
+                    </div>
+                  </Link>
+                </motion.div>
               ))}
             </div>
           </div>

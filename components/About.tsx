@@ -19,10 +19,10 @@ export default function About() {
           >
             <div className="aspect-square lg:aspect-[4/5] rounded-3xl overflow-hidden bg-[#e3d5c5]/20 relative shadow-xl z-20">
               <Image
-                src="/clinic image.png"
+                src="/clinic image2.png"
                 alt="Arogya Health Care Clinic"
                 fill
-                className="object-contain p-4 bg-[#e3d5c5]/10 group-hover:scale-105 transition-transform duration-700 ease-out"
+                className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
               />
             </div>
             {/* Dynamic Backlight Glow on hover */}
