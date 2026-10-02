@@ -22,7 +22,7 @@ export default function About() {
                 src="/clinic image.png"
                 alt="Arogya Health Care Clinic"
                 fill
-                className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                className="object-contain p-4 bg-[#e3d5c5]/10 group-hover:scale-105 transition-transform duration-700 ease-out"
               />
             </div>
             {/* Dynamic Backlight Glow on hover */}

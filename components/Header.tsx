@@ -30,6 +30,17 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [mobileMenuOpen]);
+
   return (
     <>
       <header
@@ -139,7 +150,7 @@ export default function Header() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="absolute top-full left-0 w-full bg-white shadow-lg border-t border-gray-100 xl:hidden flex flex-col pt-2"
+              className="absolute top-full left-0 w-full bg-white shadow-lg border-t border-gray-100 xl:hidden flex flex-col pt-2 max-h-[85vh] overflow-y-auto"
             >
               <nav className="flex flex-col px-6 pb-6 gap-3">
                 {navLinks.map((link) => (
