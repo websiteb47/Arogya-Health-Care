@@ -30,10 +30,10 @@ export default function Footer() {
               Professional dermatology and cosmetic care tailored to your individual needs.
             </p>
             <div className="flex items-center gap-5 text-white/80">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-white hover:scale-110 transition-all transform"><FacebookIcon className="w-5 h-5 fill-current" /></a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-white hover:scale-110 transition-all transform"><InstagramIcon className="w-5 h-5" /></a>
+              <a href="https://www.facebook.com/arogyahealthcaresattenapalli" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-white hover:scale-110 transition-all transform"><FacebookIcon className="w-5 h-5 fill-current" /></a>
+              <a href="https://www.instagram.com/aarogyahealthcare.sattenapalli/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-white hover:scale-110 transition-all transform"><InstagramIcon className="w-5 h-5" /></a>
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-white hover:scale-110 transition-all transform"><TwitterIcon className="w-5 h-5 fill-current" /></a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-white hover:scale-110 transition-all transform"><YoutubeIcon className="w-5 h-5" /></a>
+              <a href="https://www.youtube.com/@arogyahealthcare-u3c" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-white hover:scale-110 transition-all transform"><YoutubeIcon className="w-5 h-5" /></a>
             </div>
           </div>
 

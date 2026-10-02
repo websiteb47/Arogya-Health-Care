@@ -52,15 +52,30 @@ export default function Header() {
         {/* Top Info Bar */}
         <div className={`bg-[#593d31] text-[#fdf9f4] font-medium text-xs transition-all duration-300 overflow-hidden ${isScrolled ? 'h-0 opacity-0' : 'h-auto py-2.5 opacity-100'}`}>
           <div className="container mx-auto px-2 sm:px-4 lg:px-8 flex justify-between items-center gap-4 whitespace-nowrap overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-            <a href="tel:+919959333820" className="flex items-center gap-1.5 hover:text-white transition-colors">
-              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
-              <span>09959-333820</span>
-            </a>
-            <div className="flex items-center gap-4 justify-end flex-grow">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-white transition-colors"><FacebookIcon className="w-4 h-4" /></a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-white transition-colors"><InstagramIcon className="w-4 h-4" /></a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-white transition-colors"><TwitterIcon className="w-4 h-4" /></a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-white transition-colors"><YoutubeIcon className="w-4 h-4" /></a>
+            {/* Desktop Only: Address and Time */}
+            <div className="hidden sm:flex items-center gap-6">
+              <div className="flex items-center gap-2">
+                <MapPin className="w-3.5 h-3.5" />
+                <span>Sattenapalli, Palnadu Dist.</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <span>10:00 AM - 8:00 PM</span>
+              </div>
+            </div>
+
+            {/* Mobile: Full Width Phone & Socials. Desktop: Right aligned Phone & Socials */}
+            <div className="flex items-center justify-between sm:justify-end gap-4 w-full sm:w-auto">
+              <a href="tel:+919959333820" className="flex items-center gap-1.5 hover:text-white transition-colors">
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+                <span>09959-333820</span>
+              </a>
+              <div className="flex items-center gap-4 sm:border-l border-white/20 sm:pl-4">
+                <a href="https://www.facebook.com/arogyahealthcaresattenapalli" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-white transition-colors"><FacebookIcon className="w-4 h-4" /></a>
+                <a href="https://www.instagram.com/aarogyahealthcare.sattenapalli/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-white transition-colors"><InstagramIcon className="w-4 h-4" /></a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-white transition-colors"><TwitterIcon className="w-4 h-4" /></a>
+                <a href="https://www.youtube.com/@arogyahealthcare-u3c" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="hover:text-white transition-colors"><YoutubeIcon className="w-4 h-4" /></a>
+              </div>
             </div>
           </div>
         </div>
